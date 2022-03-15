@@ -6,7 +6,7 @@ Arduino Uno based Notebook Adapter compatible with original Timex Datalink softw
 -  Arduino software to upload to an Arduino Uno
 -  Software libraries for Arduino (see below)
 -  RS232 TTL hat (I used Anmbest MAX3232 3.3V to 5V DB9 Male RS232 on Amazon)
--  LED (with 1k resistor on GND between LED's ground wire)
+-  Red LED (with 1k resistor on GND between LED's ground wire)
 -  4 short wires with Dupont connectors that are male on one end, female on the other
 -  Null modem cable to connect TTL adapter to PC
 -  Windows 9x PC or virtual machine with serial port and Timex Datalink software installed (verified with 2.1d)
@@ -23,6 +23,8 @@ Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors.
 -  Connect pin 8 on the Arduino Uno to RX on the TTL adapter
 -  Connect 5V on the Arduino Uno to VCC on the TTL adapter
 -  Connect any GND on the Arduino Uno to GND on the TTL adapter
+-  Connect pin 12 on the Arduino Uno to the postive/longer leg on the red LED
+-  Connect any GND on the Arduino Uno to a 1k resistor and other end of resistor to the negative/short end on the red LED
 -  Connect USB type B to power source (does not currently use USB for data/communication)
 -  Connect Null modem cable between TTL adapter and PC
 
