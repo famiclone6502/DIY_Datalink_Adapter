@@ -1,5 +1,5 @@
 # DIY Datalink Adapter
-Arduino Uno based Notebook Adapter compatible with original Timex Datalink software
+Arduino Uno based Notebook Adapter compatible with original Timex Datalink software that eliminates the requirement of syncing with a CRT monitor
 
 ## Requirements
 -  Arduino Uno
