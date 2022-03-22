@@ -18,13 +18,14 @@ This currently requires two Arduino libraries, add them with the Library Manager
 -  DigitalIO (tested with version 1.0.0)
 
 ## Connecting it all
-Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors. Add an LED with 1k resistor. Power the Arduino Uno via USB. Connect null modem cable from the PC to the TTL adapter.  
+Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors. Add an LED with 1k resistor. Power the Arduino Uno via USB. Connect null modem cable from the PC to the TTL adapter.<br><br>
+<img src="DIY_Datalink_Breadboard.png" width="340" height="577"><br>
 -  Connect pin 9 on the Arduino Uno to TX on the TTL adapter
 -  Connect pin 8 on the Arduino Uno to RX on the TTL adapter
--  Connect 5V on the Arduino Uno to VCC on the TTL adapter
+-  Connect 5V on the Arduino Uno to VCC on the TTL adapter (<b>Warning</b>: some TTL adapters may accept or even require connecting 3V instead)
 -  Connect any GND on the Arduino Uno to GND on the TTL adapter
 -  Connect pin 12 on the Arduino Uno to the postive/longer leg on the red LED
--  Connect any GND on the Arduino Uno to a 1k resistor and other end of resistor to the negative/short end on the red LED
+-  Connect any GND on the Arduino Uno to a 1k resistor and other end of resistor to the negative/short end on the red LED (you can just twist these together in a pinch)
 -  Connect USB type B to power source (does not currently use USB for data/communication)
 -  Connect null modem cable between TTL adapter and PC
 
@@ -33,7 +34,7 @@ Right now you need to reset the board after each usage (including watch test). J
 
 ## Special Thanks
 - [Antti Huhtala][Antti]
-- excsniper on the Arduino Discord
+- excsniper on the Arduino Discord 🦆
 
 ## Disclaimer
  Timex, Datalink, and DATA LINK are the registered trademarks of Timex Corporation.  This project is not associated with or sponsored by Timex.
