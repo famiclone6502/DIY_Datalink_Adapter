@@ -1,5 +1,5 @@
 # DIY Datalink Adapter
-<img src="DIY_Datalink_photo.png" width="476" height="382"><br>
+<img src="DIY_Datalink_photo.png" width="476"><br>
 This is a working Arduino Uno based replacement for the Notebook Adapter kit.<br>
 It's compatible with the original software, and eliminates the need for a CRT monitor.<br>
 
