@@ -1,5 +1,7 @@
 # DIY Datalink Adapter
-Arduino Uno based Notebook Adapter compatible with original Timex Datalink software that eliminates the requirement of syncing with a CRT monitor
+<img src="DIY_Datalink_photo.png" width="476" height="382"><br>
+This is a working Arduino Uno based replacement for the Notebook Adapter kit.<br>
+It's compatible with the original software, and eliminates the need for a CRT monitor.<br>
 
 ## Requirements
 -  Arduino Uno
@@ -31,7 +33,8 @@ Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors.
 -  Connect null modem cable between TTL adapter and PC
 
 ## How to use
-Use as you would the official Datalink Notebook Adapter, following in-app directions. (You no longer need to reset the board after each usage).
+Use as you would the official Datalink Notebook Adapter, following in-app directions.<br>
+<b>Update</b>: You no longer need to reset the board after each usage.
 
 ## Special Thanks
 - [Antti Huhtala][Antti]
