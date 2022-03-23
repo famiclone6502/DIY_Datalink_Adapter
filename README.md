@@ -13,9 +13,10 @@ Arduino Uno based Notebook Adapter compatible with original Timex Datalink softw
 -  Timex Datalink watch (tested with Datalink 150)
 
 ## Libraries Used
-This currently requires two Arduino libraries, add them with the Library Manager in the Arduino software.
+This currently requires three Arduino libraries, add them with the Library Manager in the Arduino software.
 -  AltSoftSerial (tested with version 1.4.0)
 -  DigitalIO (tested with version 1.0.0)
+-  SafeString (for millisDelay, tested with version 4.1.15)
 
 ## Connecting it all
 Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors. Add an LED with 1k resistor. Power the Arduino Uno via USB. Connect null modem cable from the PC to the TTL adapter.<br><br>
@@ -30,7 +31,7 @@ Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors.
 -  Connect null modem cable between TTL adapter and PC
 
 ## How to use
-Right now you need to reset the board after each usage (including watch test). Just use the reset button on the board, no need to unplug the power. Otherwise, use as you would the official Datalink Notebook Adapter, following in-app directions. 
+Use as you would the official Datalink Notebook Adapter, following in-app directions. (You no longer need to reset the board after each usage).
 
 ## Special Thanks
 - [Antti Huhtala][Antti]
