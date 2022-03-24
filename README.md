@@ -2,7 +2,8 @@
 <img src="DIY_Datalink_photo.png" width="476"><br>
 This is a working Arduino Uno based replacement for the Notebook Adapter kit.<br>
 It's compatible with the original software (and PC hardware), while eliminating the need for a CRT monitor.<br>
-It even works with a virtual machine, but you still need a USB to serial adapter (or a DB9 port on your PC). Right now, directly using the Arduino USB for serial communication won't work.<br>
+It even works with a virtual machine, but you still need some kind of USB to serial adapter (or a DB9 port on your PC).<br>
+Right now, directly using the Arduino USB for serial communication won't work.<br>
 
 ## Requirements
 -  Arduino Uno (this should be compatible with other Arduino boards or similar microcontrollers, but it's only been tested on an Uno R3)
@@ -14,7 +15,7 @@ It even works with a virtual machine, but you still need a USB to serial adapter
 -  Null modem cable to connect TTL adapter to PC
 -  Windows 9x PC or virtual machine with serial port and Timex Datalink software installed (verified with 2.1d). Win3.x may also work.
 -  Timex Datalink watch (tested with Datalink 150)
--  <b>Optional</b>: USB to serial adapter for use with a virtual machine.
+-  <b>Optional</b>: USB to serial adapter for use with a virtual machine. It doesn't have to involve a DB9 connector, you can use a USB to TTL adapter directly without TTL hat. 
 
 ## Libraries Used
 This currently requires three Arduino libraries, add them with the Library Manager in the Arduino software.
