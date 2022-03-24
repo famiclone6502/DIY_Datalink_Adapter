@@ -14,7 +14,7 @@ It even works with a virtual machine, but you still need some kind of USB to ser
 -  [Null modem cable][NullModem] to connect TTL adapter to PC
 -  Windows 9x PC or virtual machine with serial port and Timex Datalink software installed (verified with 2.1d). Win3.x may also work.
 -  [Timex Datalink watch][Watch_Wiki] (tested with Datalink 150)
--  <b>Optional</b>: [USB to serial adapter][USB_Serial] for use with a virtual machine. It doesn't have to involve a DB9 connector, you can use a [USB to TTL][TTL_Direct] adapter directly without TTL hat. But you'll need additional [Dupont wires][DupontWire] with male on both eneds.
+-  <b>Optional</b>: [USB to serial adapter][USB_Serial] for use with a virtual machine. It doesn't have to involve a DB9 connector, you can use a [USB to TTL][TTL_Direct] adapter directly without TTL hat. But you'll need additional [Dupont wires][DupontWire] with male on both ends.
 
 ## Libraries Used
 This currently requires three Arduino libraries, add them with the Library Manager in the Arduino software.
