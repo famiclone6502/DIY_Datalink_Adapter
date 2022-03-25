@@ -1,7 +1,7 @@
 # DIY Datalink Adapter
 <img src="DIY_Datalink_photo.png" width="476"><br>
 This is a working Arduino Uno based replacement for the [Notebook Adapter kit][Adapter_Wiki] used by the [Timex Datalink][Watch_Wiki] watch.<br>
-It's compatible with the original software (and PC hardware), while eliminating the need for a CRT monitor.<br>
+It's compatible with the original software (and PC hardware), and completely eliminates the need for syncing the watch with a CRT monitor.<br>
 It even works with a virtual machine, but you still need some kind of USB to serial adapter (or a DB9 port on your PC).<br>
 
 ## Requirements
@@ -12,7 +12,7 @@ It even works with a virtual machine, but you still need some kind of USB to ser
 -  [Red LED][LEDs] (with [1k resistor][ResistorKit] on GND between LED's ground wire)
 -  4-6 short [wires with Dupont connectors][DupontWire] that are male on one end, female on the other
 -  [Null modem cable][NullModem] to connect TTL adapter to PC
--  Windows 9x PC or virtual machine with serial port and Timex Datalink software installed (verified with 2.1d). Win3.x may also work.
+-  Windows 9x PC or virtual machine with serial port and Timex Datalink software installed (verified with 2.1d). Windows 3.x or even [Wine][Wine] may also work, but are untested.
 -  [Timex Datalink watch][Watch_Wiki] (tested with Datalink 150)
 -  <b>Optional</b>: [USB to serial adapter][USB_Serial] for use with a virtual machine. It doesn't have to involve a DB9 connector, you can use a [USB to TTL][TTL_Direct] adapter directly without TTL hat. But you'll need additional [Dupont wires][DupontWire] with male on both ends.
 
@@ -33,18 +33,18 @@ Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors.
 -  Connect any GND on the Arduino Uno to a 1k resistor and other end of resistor to the negative/short end on the red LED (you can just twist these together in a pinch)
 -  Connect USB type B to power source (does not currently use USB for data/communication)
 -  Connect null modem cable between TTL adapter and PC
--  If you're using a virtual machine, pass through the COM port to your VM. It's better not to pass through the USB to serial device directly. This is verified to work in VMWare Workstation. 
+-  If you're using a virtual machine, pass through the COM port to your VM. It's better not to pass through the USB to serial device directly. This is verified to work in [VMWare Workstation][VMWare]. 
 
 ## How to use
-Use as you would the official Datalink Notebook Adapter, following in-app directions.<br>
+Use as you would the official Datalink Notebook Adapter, following in-app directions.<br><br>
 You may need to shield the watch sensor from interference, like modern LED lightbulbs or even monitors. <br><br>
 <b>Update</b>: You no longer need to reset the board after each usage. It should behave now just like the official adapter, but it's possible you may need to adjust the the inactivity timeout if it keeps failing after a successful first use.
 
 ## To-Do List
 
-The project as-is primarily works as a direct replacement for the original hardware, but a compact modern solution would be nice: <br>
--  Right now, directly using the Arduino USB for serial communication won't work. The official software does not parse the responses from the Arduino's hardware serial. It only responds to the software serial library's write command, not even serial print. Ideally for modern usage, eliminating TTL or DB9 would be more convenient and cheaper to build, but I have yet to get this to work. 
--  I would also like to test this on a smaller board that maybe has a built-in LED for convenience. 
+The project as-is primarily works as a direct replacement for the original hardware, but a compact board that has a built-in red LED and uses just one USB cable would be ideal. <br>
+-  Right now, directly using the Arduino USB for serial communication won't work. The official software does not parse the responses from the Arduino's hardware serial. It only responds to the software serial library's write command, not even serial print. For modern usage, eliminating the TTL adapter or DB9 would be more convenient and cheaper to build, but I have yet to get this to work. 
+-  Once hardware serial works, I would also like to test this on a smaller board that has a built-in red LED for even more convenience. 
 
 ## Special Thanks
 - [Antti Huhtala][Antti]
@@ -65,3 +65,5 @@ The project as-is primarily works as a direct replacement for the original hardw
 [USB_Serial]: <https://smile.amazon.com/dp/B0753HBT12>
 [TTL_Hat]: <https://smile.amazon.com/Anmbest-Converter-Connector-Raspberry-Microcontrollers/dp/B07LBDZ9WG/>
 [TTL_Direct]: <https://www.sparkfun.com/products/17831>
+[Wine]: <https://www.winehq.org/>
+[VMWare]: <https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html>
