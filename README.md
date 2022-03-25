@@ -51,6 +51,7 @@ The project as-is primarily works as a direct replacement for the original hardw
 - excsniper on the Arduino Discord 🦆
 
 ## Disclaimer
+ I am not a professional programmer. This is my first Github project. Please be kind. 😬<br><br>
  Timex, Datalink, and DATA LINK are the registered trademarks of Timex Corporation.  This project is not associated with or sponsored by Timex.
  
 [Antti]: <https://github.com/ahhuhtal>
