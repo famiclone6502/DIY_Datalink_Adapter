@@ -9,12 +9,14 @@ It even works with a virtual machine, but you still need some kind of USB to ser
 -  [Arduino software][ArduinoSoft] to upload the .ino file to an Arduino Uno
 -  Software libraries for Arduino (see below)
 -  [RS232 TTL hat][TTL_Hat] (I used Anmbest MAX3232 3.3V to 5V DB9 Male RS232 on Amazon)
--  [Red LED][LEDs] (with [1k resistor][ResistorKit] on GND between LED's ground wire)
+-  [Red LED][LEDs] (with [1k resistor][ResistorKit] on GND between LED's ground wire) Note: You may need to try a clear LED if red doesn't work.
 -  4-6 short [wires with Dupont connectors][DupontWire] that are male on one end, female on the other
 -  [Null modem cable][NullModem] to connect TTL adapter to PC
 -  Windows 9x PC or virtual machine with serial port and Timex Datalink software installed (verified with 2.1d). Windows 3.x or even [Wine][Wine] may also work, but are untested.
 -  [Timex Datalink watch][Watch_Wiki] (tested with Datalink 150)
 -  <b>Optional</b>: [USB to serial adapter][USB_Serial] for use with a virtual machine. It doesn't have to involve a DB9 connector, you can use a [USB to TTL][TTL_Direct] adapter directly without TTL hat. But you'll need additional [Dupont wires][DupontWire] with male on both ends.
+
+The links above are specific to the US, and may not be available internationally. Even for US shoppers, the links will likely be inaccurate over time as things go out of stock. I recommend using Adafruit and Aliexpress for alternate sources that ship worldwide. If you can, try to find the same products I've recommended, as they have been tested with the project. 
 
 ## Libraries Used
 This currently requires three Arduino libraries, add them with the Library Manager in the Arduino software.
@@ -25,8 +27,8 @@ This currently requires three Arduino libraries, add them with the Library Manag
 ## Connecting it all
 Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors. Add an LED with 1k resistor. Power the Arduino Uno via USB. Connect null modem cable from the PC to the TTL adapter.<br><br>
 <img src="DIY_Datalink_Breadboard.png" width="340" height="577"><br>
--  Connect pin 9 on the Arduino Uno to TX on the TTL adapter
--  Connect pin 8 on the Arduino Uno to RX on the TTL adapter
+-  Connect pin 9 on the Arduino Uno to TX on the TTL adapter (Note: RX and TX labels may be swapped on some TTL adapters)
+-  Connect pin 8 on the Arduino Uno to RX on the TTL adapter (If the software isnt seeing the adapter: try swapping RX and TX)
 -  Connect 5V on the Arduino Uno to VCC on the TTL adapter (<b>Warning</b>: some TTL adapters may accept or even require connecting 3V instead)
 -  Connect any GND on the Arduino Uno to GND on to serialthe TTL  directlyadapter
 -  Connect pin 12 on the Arduino, Uno to the postive/longer leg on the red LED
@@ -40,11 +42,21 @@ Use as you would the official Datalink Notebook Adapter, following in-app direct
 You may need to shield the watch sensor from interference, like modern LED lightbulbs or even monitors. <br><br>
 <b>Update</b>: You no longer need to reset the board after each usage. It should behave now just like the official adapter, but it's possible you may need to adjust the the inactivity timeout if it keeps failing after a successful first use.
 
+## Troubleshooting
+
+-  If the software isn't seeing the adapter, try swapping RX and TX. You should get a blink fromt the LED when the software is trying to send. 
+-  Sometimes the Dupont connectors won't make a good connection. You might need to bend the male connectors a little to make better contact. Check with a multimeter or continuity tester to be sure. 
+-  Know that while they look the same, null modem cables are different from serial cables. You may need to adapt a serial cable with a null modem adapter, or just try a different set of cables. 
+-  When sending the sketch to the Arduino, check for errors. You should see an "Done uploading" message if everything went smoothly. 
+-  If you're ever having issues, try using a terminal program like PuTTy (version 0.61 works in Win9x) to check for signs of life. When typing x it should echo x, if you type ? it should return a version number.
+-  If your software doesn't like the adapter, make sure you're using the final version, 2.1d. The earliest versions don't support the adapter at all. 
+
 ## To-Do List
 
 The project as-is primarily works as a direct replacement for the original hardware, but a compact board that has a built-in red LED and uses just one USB cable would be ideal. <br>
 -  Right now, directly using the Arduino USB for serial communication won't work. The official software does not parse the responses from the Arduino's hardware serial. It only responds to the software serial library's write command, not even serial print. For modern usage, eliminating the TTL adapter or DB9 would be more convenient and cheaper to build, but I have yet to get this to work. 
 -  Once hardware serial works, I would also like to test this on a smaller board that has a built-in red LED for even more convenience. 
+-  One day I would like to add a 3D case to the project, especially since it would help focus the light away from interference. 
 
 ## Special Thanks
 - [Antti Huhtala][Antti]
