@@ -1,10 +1,24 @@
 # DIY Datalink Adapter
 <img src="DIY_Datalink_photo.png" width="476"><br>
-This is a working Arduino Uno based replacement for the [Notebook Adapter kit][Adapter_Wiki] used by the [Timex Datalink][Watch_Wiki] watch.<br>
+This is a working Arduino Uno and Raspberry Pi Pico based replacement for the [Notebook Adapter kit][Adapter_Wiki] used by the [Timex Datalink][Watch_Wiki] watch.<br>
 It's compatible with the original software (and PC hardware), and completely eliminates the need for syncing the watch with a CRT monitor.<br>
 It even works with a virtual machine, but you still need some kind of USB to serial adapter (or a DB9 port on your PC).<br>
 
-## Requirements
+## Raspberry Pi Pico Version: Requirements
+-  Raspberry Pi Pico
+-  USB cable (with data line)
+-  Download of DIY_Datalink_Pico.uf2
+-  Legacy Windows Virtual Machine (tested with Windows 98 SE in VMWare Workstation 16)
+-  [Timex Datalink watch][Watch_Wiki] (tested with Datalink 150)
+-  No other hardware requirements, uses Pico's built-in LED by default
+
+## Raspberry Pi Pico Version: Connecting it All
+-  Connect the Raspberry Pi Pico to the host PC while holding down the Pico's reset button. This should mount the Pico as a USB drive.
+-  Drag and drop DIY_Datalink_Pico.uf2 onto the Pico's root folder, it should immediatley unmount itself and restart as a USB serial device.
+-  In the virtual machine settings, use the COM port assigned to the Pico and connect it. Be sure the USB device is connected to the host machine, but the serial port it presents to the OS is connected to the VM. (Legacy Windows may not be able to directly talk to the USB host device, drivers may not be available to accommodate this.) 
+-  Use the Timex Datalink software as normal. 
+
+## Arduino Version: Requirements
 -  [Arduino Uno][ArduinoUno] (this should be compatible with other Arduino boards or similar microcontrollers, but it's only been tested on an Uno R3)
 -  [Arduino software][ArduinoSoft] to upload the .ino file to an Arduino Uno
 -  Software libraries for Arduino (see below)
@@ -18,13 +32,13 @@ It even works with a virtual machine, but you still need some kind of USB to ser
 
 The links above are specific to the US, and may not be available internationally. Even for US shoppers, the links will likely be inaccurate over time as things go out of stock. I recommend using Adafruit and Aliexpress for alternate sources that ship worldwide. If you can, try to find the same products I've recommended, as they have been tested with the project. 
 
-## Libraries Used
+## Arduino Version: Libraries Used
 This currently requires three Arduino libraries, add them with the Library Manager in the Arduino software.
 -  AltSoftSerial (tested with version 1.4.0)
 -  DigitalIO (tested with version 1.0.0)
 -  SafeString (for millisDelay, tested with version 4.1.15)
 
-## Connecting it all
+## Arduino Version: Connecting it all
 Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors. Add an LED with 1k resistor. Power the Arduino Uno via USB. Connect null modem cable from the PC to the TTL adapter.<br><br>
 <img src="DIY_Datalink_Breadboard.png" width="340" height="577"><br>
 -  Connect pin 9 on the Arduino Uno to TX on the TTL adapter (Note: RX and TX labels may be swapped on some TTL adapters)
@@ -42,7 +56,7 @@ Use as you would the official Datalink Notebook Adapter, following in-app direct
 You may need to shield the watch sensor from interference, like modern LED lightbulbs or even monitors. <br><br>
 <b>Update</b>: You no longer need to reset the board after each usage. It should behave now just like the official adapter, but it's possible you may need to adjust the the inactivity timeout if it keeps failing after a successful first use.
 
-## Troubleshooting
+## Arduino Version: Troubleshooting
 
 -  If the software isn't seeing the adapter, try swapping RX and TX. You should get a blink fromt the LED when the software is trying to send. 
 -  Sometimes the Dupont connectors won't make a good connection. You might need to bend the male connectors a little to make better contact. Check with a multimeter or continuity tester to be sure. 
@@ -51,7 +65,7 @@ You may need to shield the watch sensor from interference, like modern LED light
 -  If you're ever having issues, try using a terminal program like PuTTy (version 0.61 works in Win9x) to check for signs of life. When typing x it should echo x, if you type ? it should return a version number.
 -  If your software doesn't like the adapter, make sure you're using the final version, 2.1d. The earliest versions don't support the adapter at all. 
 
-## To-Do List
+## Arduino Version: To-Do List
 
 The project as-is primarily works as a direct replacement for the original hardware, but a compact board that has a built-in red LED and uses just one USB cable would be ideal. <br>
 -  Right now, directly using the Arduino USB for serial communication won't work. The official software does not parse the responses from the Arduino's hardware serial. It only responds to the software serial library's write command, not even serial print. For modern usage, eliminating the TTL adapter or DB9 would be more convenient and cheaper to build, but I have yet to get this to work. 
@@ -61,6 +75,8 @@ The project as-is primarily works as a direct replacement for the original hardw
 ## Special Thanks
 - [Antti Huhtala][Antti]
 - excsniper on the Arduino Discord 🦆
+- Selzby and leandromarceddu on the unofficial Pico Discord for their hints and encouragement
+- PhiLho on a Processing.org forum post for their bitwise info
 
 ## Disclaimer
  I am not a professional programmer. This is my first Github project. Please be kind. 😬<br><br>
