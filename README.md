@@ -1,6 +1,6 @@
 # DIY Datalink Adapter
 
-This is a microcontroller replacement for the [Notebook Adapter kit][Adapter_Wiki] used by the [Timex Datalink][Watch_Wiki] watch. It's compatible with the original software (and PC hardware), and eliminates the need for syncing the watch with a CRT monitor.<br>
+This is a modern microcontroller based replacement for the [Notebook Adapter kit][Adapter_Wiki] used by the [Timex Datalink][Watch_Wiki] watch. It's compatible with the original software (and PC hardware), and eliminates the need for syncing the watch with a CRT monitor.<br>
 
 There are now two versions:
 -  Raspberry Pi Pico based USB version - Simplest setup, no hardware tinkering required. Primarily intended for use with a Virtual Machine.
@@ -23,7 +23,7 @@ You may need to shield the watch sensor from interference, like modern LED light
 -  Connect the Raspberry Pi Pico to the host PC while holding down the Pico's reset button. This should mount the Pico as a USB drive.
 -  Drag and drop DIY_Datalink_Pico.uf2 onto the Pico's root folder, it should immediatley unmount itself and restart as a USB serial device.
 -  In the virtual machine settings, use the COM port assigned to the Pico and connect it. Be sure the USB device is connected to the host machine, but the serial port it presents to the OS is connected to the VM. (Legacy Windows may not be able to directly talk to the USB host device, drivers may not be available to accommodate this.) 
--  Use the Timex Datalink software as normal. 
+-  Use the Timex Datalink software as normal (2.1d is recommended). 
 
 # Arduino Version
 <img src="DIY_Datalink_photo.png" width="476"><br>
