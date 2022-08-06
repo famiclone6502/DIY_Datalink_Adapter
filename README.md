@@ -2,7 +2,7 @@
 <img src="DIY_Datalink_photo.png" width="476"><br>
 This is a working Arduino Uno and Raspberry Pi Pico based replacement for the [Notebook Adapter kit][Adapter_Wiki] used by the [Timex Datalink][Watch_Wiki] watch.<br>
 It's compatible with the original software (and PC hardware), and completely eliminates the need for syncing the watch with a CRT monitor.<br>
-It even works with a virtual machine, but you still need some kind of USB to serial adapter (or a DB9 port on your PC).<br>
+The Pico version works best with a virtual machine, but even the Arduino version can use a USB to serial adapter (or a DB9 port on your PC).<br>
 
 ## Raspberry Pi Pico Version: Requirements
 -  Raspberry Pi Pico
@@ -51,11 +51,6 @@ Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors.
 -  Connect null modem cable between TTL adapter and PC
 -  If you're using a virtual machine, pass through the COM port to your VM. It's better not to pass through the USB to serial device directly. This is verified to work in [VMWare Workstation][VMWare]. 
 
-## How to use
-Use as you would the official Datalink Notebook Adapter, following in-app directions.<br><br>
-You may need to shield the watch sensor from interference, like modern LED lightbulbs or even monitors. <br><br>
-<b>Update</b>: You no longer need to reset the board after each usage. It should behave now just like the official adapter, but it's possible you may need to adjust the the inactivity timeout if it keeps failing after a successful first use.
-
 ## Arduino Version: Troubleshooting
 
 -  If the software isn't seeing the adapter, try swapping RX and TX. You should get a blink fromt the LED when the software is trying to send. 
@@ -71,6 +66,10 @@ The project as-is primarily works as a direct replacement for the original hardw
 -  Right now, directly using the Arduino USB for serial communication won't work. The official software does not parse the responses from the Arduino's hardware serial. It only responds to the software serial library's write command, not even serial print. For modern usage, eliminating the TTL adapter or DB9 would be more convenient and cheaper to build, but I have yet to get this to work. 
 -  Once hardware serial works, I would also like to test this on a smaller board that has a built-in red LED for even more convenience. 
 -  One day I would like to add a 3D case to the project, especially since it would help focus the light away from interference. 
+
+## How to use
+Use as you would the official Datalink Notebook Adapter, following in-app directions.<br><br>
+You may need to shield the watch sensor from interference, like modern LED lightbulbs or even monitors. <br><br>
 
 ## Special Thanks
 - [Antti Huhtala][Antti]
