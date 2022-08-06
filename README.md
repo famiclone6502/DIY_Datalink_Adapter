@@ -1,9 +1,16 @@
 # DIY Datalink Adapter
-<img src="DIY_Datalink_photo.png" width="476"><br>
-This is a working Arduino Uno and Raspberry Pi Pico based replacement for the [Notebook Adapter kit][Adapter_Wiki] used by the [Timex Datalink][Watch_Wiki] watch.<br>
-It's compatible with the original software (and PC hardware), and completely eliminates the need for syncing the watch with a CRT monitor.<br>
-The Pico version works best with a virtual machine, but even the Arduino version can use a USB to serial adapter (or a DB9 port on your PC).<br>
 
+This is a microcontroller replacement for the [Notebook Adapter kit][Adapter_Wiki] used by the [Timex Datalink][Watch_Wiki] watch. It's compatible with the original software (and PC hardware), and eliminates the need for syncing the watch with a CRT monitor.<br>
+
+There are now two versions:
+-  Raspberry Pi Pico based USB version - Simplest setup, no hardware tinkering required. Primarily intended for use with a Virtual Machine.
+-  Arduino Uno based DB9 version - Some assembly required. Best used with original legacy hardware, but also works with a a Virtual Machine with or without a USB to serial adapter.
+
+Use as you would the official Datalink Notebook Adapter, following in-app directions.<br>
+You may need to shield the watch sensor from interference, like modern LED lightbulbs or even monitors. <br>
+
+# Raspberry Pi Pico Version
+<img src="DIY_Datalink_pico_photo.jpg" width="476"><br>
 ## Raspberry Pi Pico Version: Requirements
 -  Raspberry Pi Pico
 -  USB cable (with data line)
@@ -18,6 +25,8 @@ The Pico version works best with a virtual machine, but even the Arduino version
 -  In the virtual machine settings, use the COM port assigned to the Pico and connect it. Be sure the USB device is connected to the host machine, but the serial port it presents to the OS is connected to the VM. (Legacy Windows may not be able to directly talk to the USB host device, drivers may not be available to accommodate this.) 
 -  Use the Timex Datalink software as normal. 
 
+# Arduino Version
+<img src="DIY_Datalink_photo.png" width="476"><br>
 ## Arduino Version: Requirements
 -  [Arduino Uno][ArduinoUno] (this should be compatible with other Arduino boards or similar microcontrollers, but it's only been tested on an Uno R3)
 -  [Arduino software][ArduinoSoft] to upload the .ino file to an Arduino Uno
@@ -60,24 +69,16 @@ Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors.
 -  If you're ever having issues, try using a terminal program like PuTTy (version 0.61 works in Win9x) to check for signs of life. When typing x it should echo x, if you type ? it should return a version number.
 -  If your software doesn't like the adapter, make sure you're using the final version, 2.1d. The earliest versions don't support the adapter at all. 
 
-## Arduino Version: To-Do List
-
-The project as-is primarily works as a direct replacement for the original hardware, but a compact board that has a built-in red LED and uses just one USB cable would be ideal. <br>
--  Right now, directly using the Arduino USB for serial communication won't work. The official software does not parse the responses from the Arduino's hardware serial. It only responds to the software serial library's write command, not even serial print. For modern usage, eliminating the TTL adapter or DB9 would be more convenient and cheaper to build, but I have yet to get this to work. 
--  Once hardware serial works, I would also like to test this on a smaller board that has a built-in red LED for even more convenience. 
+# To-Do List 
 -  One day I would like to add a 3D case to the project, especially since it would help focus the light away from interference. 
 
-## How to use
-Use as you would the official Datalink Notebook Adapter, following in-app directions.<br><br>
-You may need to shield the watch sensor from interference, like modern LED lightbulbs or even monitors. <br><br>
-
-## Special Thanks
+# Special Thanks
 - [Antti Huhtala][Antti]
 - excsniper on the Arduino Discord 🦆
 - Selzby and leandromarceddu on the unofficial Pico Discord for their hints and encouragement
 - PhiLho on a Processing.org forum post for their bitwise info
 
-## Disclaimer
+# Disclaimer
  I am not a professional programmer. This is my first Github project. Please be kind. 😬<br><br>
  Timex, Datalink, and DATA LINK are the registered trademarks of Timex Corporation.  This project is not associated with or sponsored by Timex.
  
