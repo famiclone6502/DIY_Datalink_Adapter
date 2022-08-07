@@ -11,7 +11,7 @@ You may need to shield the watch sensor from interference, like modern LED light
 
 # Raspberry Pi Pico Version
 <img src="DIY_Datalink_pico_photo.jpg" width="476"><br>
-## Raspberry Pi Pico Version: Requirements
+## Requirements (Raspberry Pi Pico Version)
 -  Raspberry Pi Pico
 -  USB cable (with data line)
 -  Download of DIY_Datalink_Pico.uf2
@@ -19,15 +19,17 @@ You may need to shield the watch sensor from interference, like modern LED light
 -  [Timex Datalink watch][Watch_Wiki] (tested with Datalink 150)
 -  No other hardware requirements, uses Pico's built-in LED by default
 
-## Raspberry Pi Pico Version: Connecting it All
+<img src="DIY_Datalink_pico_watch.jpg" width="476"><br>
+## Connecting it All (Raspberry Pi Pico Version)
 -  Connect the Raspberry Pi Pico to the host PC while holding down the Pico's reset button. This should mount the Pico as a USB drive.
 -  Drag and drop DIY_Datalink_Pico.uf2 onto the Pico's root folder, it should immediatley unmount itself and restart as a USB serial device.
 -  After opening the Timex Datalink software, in the virtual machine settings, use the COM port assigned to the Pico and connect it. If you connect before opening the Datalink software, it may remount as a USB drive on the host. Be sure the USB device is connected to the host machine, but the serial port it presents to the OS is connected to the VM. (Legacy Windows may not be able to directly talk to the USB host device, drivers may not be available to accommodate this.) 
 -  Use the Timex Datalink software as normal (2.1d is recommended). 
 
+<img src="DIY_Datalink_pico_software.jpg" width="476"><br>
 # Arduino Version
 <img src="DIY_Datalink_photo.png" width="476"><br>
-## Arduino Version: Requirements
+## Requirements (Arduino Version)
 -  [Arduino Uno][ArduinoUno] (this should be compatible with other Arduino boards or similar microcontrollers, but it's only been tested on an Uno R3)
 -  [Arduino software][ArduinoSoft] to upload the .ino file to an Arduino Uno
 -  Software libraries for Arduino (see below)
@@ -41,13 +43,13 @@ You may need to shield the watch sensor from interference, like modern LED light
 
 The links above are specific to the US, and may not be available internationally. Even for US shoppers, the links will likely be inaccurate over time as things go out of stock. I recommend using Adafruit and Aliexpress for alternate sources that ship worldwide. If you can, try to find the same products I've recommended, as they have been tested with the project. 
 
-## Arduino Version: Libraries Used
+## Libraries Used (Arduino Version)
 This currently requires three Arduino libraries, add them with the Library Manager in the Arduino software.
 -  AltSoftSerial (tested with version 1.4.0)
 -  DigitalIO (tested with version 1.0.0)
 -  SafeString (for millisDelay, tested with version 4.1.15)
 
-## Arduino Version: Connecting it all
+## Connecting it all (Arduino Version)
 Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors. Add an LED with 1k resistor. Power the Arduino Uno via USB. Connect null modem cable from the PC to the TTL adapter.<br><br>
 <img src="DIY_Datalink_Breadboard.png" width="340" height="577"><br>
 -  Connect pin 9 on the Arduino Uno to TX on the TTL adapter (Note: RX and TX labels may be swapped on some TTL adapters)
@@ -60,7 +62,7 @@ Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors.
 -  Connect null modem cable between TTL adapter and PC
 -  If you're using a virtual machine, pass through the COM port to your VM. It's better not to pass through the USB to serial device directly. This is verified to work in [VMWare Workstation][VMWare]. 
 
-## Arduino Version: Troubleshooting
+## Troubleshooting (Arduino Version)
 
 -  If the software isn't seeing the adapter, try swapping RX and TX. You should get a blink from the LED when the software is trying to send. 
 -  Sometimes the Dupont connectors won't make a good connection. You might need to bend the male connectors a little to make better contact. Check with a multimeter or continuity tester to be sure. 
