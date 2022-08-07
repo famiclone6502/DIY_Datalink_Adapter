@@ -22,7 +22,7 @@ You may need to shield the watch sensor from interference, like modern LED light
 ## Raspberry Pi Pico Version: Connecting it All
 -  Connect the Raspberry Pi Pico to the host PC while holding down the Pico's reset button. This should mount the Pico as a USB drive.
 -  Drag and drop DIY_Datalink_Pico.uf2 onto the Pico's root folder, it should immediatley unmount itself and restart as a USB serial device.
--  In the virtual machine settings, use the COM port assigned to the Pico and connect it. Be sure the USB device is connected to the host machine, but the serial port it presents to the OS is connected to the VM. (Legacy Windows may not be able to directly talk to the USB host device, drivers may not be available to accommodate this.) 
+-  After opening the Timex Datalink software, in the virtual machine settings, use the COM port assigned to the Pico and connect it. If you connect before opening the Datalink software, it may remount as a USB drive on the host. Be sure the USB device is connected to the host machine, but the serial port it presents to the OS is connected to the VM. (Legacy Windows may not be able to directly talk to the USB host device, drivers may not be available to accommodate this.) 
 -  Use the Timex Datalink software as normal (2.1d is recommended). 
 
 # Arduino Version
@@ -62,7 +62,7 @@ Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors.
 
 ## Arduino Version: Troubleshooting
 
--  If the software isn't seeing the adapter, try swapping RX and TX. You should get a blink fromt the LED when the software is trying to send. 
+-  If the software isn't seeing the adapter, try swapping RX and TX. You should get a blink from the LED when the software is trying to send. 
 -  Sometimes the Dupont connectors won't make a good connection. You might need to bend the male connectors a little to make better contact. Check with a multimeter or continuity tester to be sure. 
 -  Know that while they look the same, null modem cables are different from serial cables. You may need to adapt a serial cable with a null modem adapter, or just try a different set of cables. 
 -  When sending the sketch to the Arduino, check for errors. You should see an "Done uploading" message if everything went smoothly. 
