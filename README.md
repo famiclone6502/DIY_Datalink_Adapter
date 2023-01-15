@@ -3,7 +3,7 @@
 This is a modern microcontroller based replacement for the [Notebook Adapter kit][Adapter_Wiki] used by the [Timex Datalink][Watch_Wiki] watch. It's compatible with the original software (and PC hardware), and eliminates the need for syncing the watch with a CRT monitor.<br>
 
 There are now two versions:
--  Raspberry Pi Pico based USB version - Simplest setup, no hardware tinkering required. Primarily intended for use with a Virtual Machine.
+-  Raspberry Pi Pico based USB version - Simplest setup, no hardware tinkering required. Primarily intended for use with a Virtual Machine. (Currently incompatible with the wireless Pico W model).
 -  Arduino Uno based DB9 version - Some assembly required. Best used with original legacy hardware, but also works with a a Virtual Machine with or without a USB to serial adapter.
 
 Use as you would the official Datalink Notebook Adapter, following in-app directions.<br>
@@ -12,7 +12,7 @@ You may need to shield the watch sensor from interference, like modern LED light
 # Raspberry Pi Pico Version
 <img src="DIY_Datalink_pico_photo.jpg" width="476"><br>
 ## Requirements (Raspberry Pi Pico Version)
--  Raspberry Pi Pico
+-  Raspberry Pi Pico (Note: the Pico W is currently unsupported) 
 -  USB cable (with data line)
 -  Download of DIY_Datalink_Pico.uf2
 -  Legacy Windows Virtual Machine (tested with Windows 98 SE in VMWare Workstation 16)
@@ -73,6 +73,7 @@ Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors.
 
 # To-Do List 
 -  One day I would like to add a 3D case to the project, especially since it would help focus the light away from interference. 
+-  Pico W support, when I can get my hands on one. 
 
 # Special Thanks
 - [Antti Huhtala][Antti]
