@@ -3,7 +3,7 @@
 This is a modern microcontroller based replacement for the [Notebook Adapter kit][Adapter_Wiki] used by the [Timex Datalink][Watch_Wiki] watch. It's compatible with the original software (and PC hardware), and eliminates the need for syncing the watch with a CRT monitor.<br>
 
 There are now two versions:
--  USB version for the original Raspberry Pi Pico - Simplest setup if using the original Pico model, no hardware tinkering required. Primarily intended for use with a Virtual Machine. Note: Pico W is unsupported.* 
+-  USB version for the original Raspberry Pi Pico - Simplest setup if using the original Pico model, no hardware tinkering required. Primarily intended for use with a Virtual Machine. Note: Pico W requires external LED.*
 -  DB9 version for the Arduino Uno - Some assembly required. Best used with original legacy hardware, but also works with a a Virtual Machine with or without a USB to serial adapter.
 
 Use as you would the official Datalink Notebook Adapter, following in-app directions.<br>
@@ -12,12 +12,13 @@ You may need to shield the watch sensor from interference, like modern LED light
 # Raspberry Pi Pico Version
 <img src="DIY_Datalink_pico_photo.jpg" width="476"><br>
 ## Requirements (Raspberry Pi Pico Version)
--  Original model of Raspberry Pi Pico (Not Pico W!)*
+-  Original model of Raspberry Pi Pico if you want to just use the onboard LED. (Pico W users must use external LED, see below).
 -  USB cable (with data line)
 -  Download of DIY_Datalink_Pico.uf2
 -  Legacy Windows Virtual Machine (tested with Windows 98 SE in VMWare Workstation 16)
 -  [Timex Datalink watch][Watch_Wiki] (tested with Datalink 150)
--  No other hardware requirements, uses Pico's built-in LED by default
+-  No other hardware requirements for the original Pico, uses built-in LED.
+-  External LED on GPIO pin 18 connected to 1k resistor on GND is required for Pico W, but is optional on original Pico.*
 
 <img src="DIY_Datalink_pico_watch.jpg" width="476"><br>
 ## Connecting it All (Raspberry Pi Pico Version)
@@ -26,7 +27,7 @@ You may need to shield the watch sensor from interference, like modern LED light
 -  After opening the Timex Datalink software, in the virtual machine settings, use the COM port assigned to the Pico and connect it. If you connect before opening the Datalink software, it may remount as a USB drive on the host. Be sure the USB device is connected to the host machine, but the serial port it presents to the OS is connected to the VM. (Legacy Windows may not be able to directly talk to the USB host device, drivers may not be available to accommodate this.) 
 -  Use the Timex Datalink software as normal (2.1d is recommended). 
 
-*If you are trying to use a Pico W, the hardware changed from a GPIO pin to go through the Wi-Fi chip. This method does not support the low-latency blinking that is required for this project. You would need to use an external LED with a resistor like the Arduino version, and recompile the code to use another GPIO pin. 
+*If you are trying to use a Pico W, the internal LED hardware changed from a GPIO pin to go through the Wi-Fi chip. This method does not support the low-latency blinking that is required for this project, which is why an external LED is required. 
 
 <img src="DIY_Datalink_pico_software.jpg" width="476"><br>
 # Arduino Version
@@ -72,6 +73,11 @@ Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors.
 -  When sending the sketch to the Arduino, check for errors. You should see an "Done uploading" message if everything went smoothly. 
 -  If you're ever having issues, try using a terminal program like PuTTy (version 0.61 works in Win9x) to check for signs of life. When typing x it should echo x, if you type ? it should return a version number.
 -  If your software doesn't like the adapter, make sure you're using the final version, 2.1d. The earliest versions don't support the adapter at all. 
+
+## Troubleshooting (Pico Version)
+
+-  Don't assign the Pico directly to the VM, just the COM port. I'm not aware of any working drivers for older OSes. 
+-  If VMWare won't let you assign the COM port for the Pico, or causes it to re-mount as a storage device, try running a sync in the Timex software first.
 
 # To-Do List 
 -  One day I would like to add a 3D case to the project, especially since it would help focus the light away from interference. 
