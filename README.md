@@ -79,14 +79,15 @@ Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors.
 -  Don't assign the Pico directly to the VM, just the COM port. I'm not aware of any working drivers for older OSes. 
 -  If VMWare won't let you assign the COM port for the Pico, or causes it to re-mount as a storage device, try running a sync in the Timex software first.
 
-# To-Do List 
--  One day I would like to add a 3D case to the project, especially since it would help focus the light away from interference. 
+# 3D Printed Case 
+-  [Shilbo][Shilbo] has [designed][3DPrint] and [printed][3DPrintPics] a case that not only holds the watch and Pico at the right distance, but also shields the light from interference from modern LED lighting!
 
 # Special Thanks
 - [Antti Huhtala][Antti]
 - excsniper on the Arduino Discord 🦆
 - Selzby and leandromarceddu on the unofficial Pico Discord for their hints and encouragement
 - PhiLho on a Processing.org forum post for their bitwise info
+- [Shilbo][Shilbo] for providing a 3D printable case for the Pico version
 
 # Disclaimer
  I am not a professional programmer. This is my first Github project. Please be kind. 😬<br><br>
@@ -106,3 +107,6 @@ Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors.
 [TTL_Direct]: <https://www.sparkfun.com/products/17831>
 [Wine]: <https://www.winehq.org/>
 [VMWare]: <https://www.vmware.com/products/workstation-player/workstation-player-evaluation.html>
+[3DPrint]: <https://github.com/Shilbo/Datalink/>
+[Shilbo]: <https://github.com/Shilbo>
+[3DPrintPics]: <https://github.com/famiclone6502/DIY_Datalink_Adapter/issues/3#issuecomment-1541557457>
