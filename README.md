@@ -65,6 +65,30 @@ Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors.
 -  Connect null modem cable between TTL adapter and PC
 -  If you're using a virtual machine, pass through the COM port to your VM. It's better not to pass through the USB to serial device directly. This is verified to work in [VMWare Workstation][VMWare]. 
 
+## Step by Step instructions for VMware Workstation with the Pico
+-  This assumes you have a working Windows 98 virtual machine setup in VMware Workstation. You should also be able to use Windows 95. 
+-  Determine which COM port is for the Pico on the physical/host machine. Example: COM7 (Unsure? Is your host machine running Windows 10? Watch Windows 10's Device Manager before and after you've unplugged the device. Note the differences).
+-  If your Windows 98 virtual machine is already powered on, shut down the virtual machine.
+-  Add a virtual serial port via Player > Manage > Virtual Machine Settings or right click on the Windows 98 virtual machine.
+-  Click "Add" (in the bottom left hand corner), select and add a Serial Port.
+-  Set the Serial Port to use the Physical Serial Port you determined earlier. Example: COM7
+-  Note that at no point during the process should you need to physically unplug the Pico. If you have, you may need to start over.
+-  Ensure "Connected" is unchecked in VMware Workstation. 
+-  Ensure "Connect at power on" is unchecked.
+-  Start the Windows 98 Virtual Machine.
+-  Open the Timex software inside Windows 98.
+-  Intentionally fail the first device check with a sync or test.
+-  Go to Player > Manage > Virtual Machine Settings in VMware Workstation. 
+-  Select the virual serial port you added earlier.
+-  Click "Connected" to enable it.
+-  Retry the Timex software sync.
+-  Timex software should now recognize your device.
+-  You should also see the LED blinking on your Pico.
+-  Place the watch 1.5 inches away from the LED. Be sure to shield the watch from external light. Example: Try using a toilet paper tube.
+-  If your watch is set to sync mode, you should hear beeps from the watch!
+
+Instructions originally provided by [MuddledBox]. Thank you!
+
 ## Troubleshooting (Arduino Version)
 
 -  If the software isn't seeing the adapter, try swapping RX and TX. You should get a blink from the LED when the software is trying to send. 
@@ -88,6 +112,7 @@ Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors.
 - Selzby and leandromarceddu on the unofficial Pico Discord for their hints and encouragement
 - PhiLho on a Processing.org forum post for their bitwise info
 - [Shilbo][Shilbo] for providing a 3D printable case for the Pico version
+- [MuddledBox] for providing step-by-step instructions in VMware Workstation
 
 # Disclaimer
  I am not a professional programmer. This is my first Github project. Please be kind. 😬<br><br>
@@ -110,3 +135,4 @@ Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors.
 [3DPrint]: <https://github.com/Shilbo/Datalink/>
 [Shilbo]: <https://github.com/Shilbo>
 [3DPrintPics]: <https://github.com/famiclone6502/DIY_Datalink_Adapter/issues/3#issuecomment-1541557457>
+[MuddledBox]: <https://github.com/MuddledBox>
