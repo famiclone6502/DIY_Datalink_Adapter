@@ -2,8 +2,12 @@
 
 This is a modern microcontroller based replacement for the [Notebook Adapter kit][Adapter_Wiki] used by the [Timex Datalink][Watch_Wiki] watch. It's compatible with the original software (and PC hardware), and eliminates the need for syncing the watch with a CRT monitor.<br>
 
-There are now two versions:
--  USB version for the original Raspberry Pi Pico - Simplest setup if using the original Pico model, no hardware tinkering required. Primarily intended for use with a Virtual Machine. Note: Pico W requires external LED.*
+# New! Use Windows 10 to sync your watch
+You can use this "directly" in modern Windows with just a Raspberry Pi Pico and [winevdm]!<br>
+No need to setup a virtual machine with an older OS or source legacy hardware. 
+
+# Two versions for different use cases
+-  USB version for the original Raspberry Pi Pico - Simplest setup if using the original Pico model, no hardware tinkering required. You can run this "directly" on modern windows with [winevdm], but also with a virtual machine running a legacy Windows version. Note: Pico W requires external LED.*
 -  DB9 version for the Arduino Uno - Some assembly required. Best used with original legacy hardware, but also works with a a Virtual Machine with or without a USB to serial adapter.
 
 Use as you would the official Datalink Notebook Adapter, following in-app directions.<br>
@@ -15,17 +19,19 @@ You may need to shield the watch sensor from interference, like modern LED light
 -  Original model of Raspberry Pi Pico if you want to just use the onboard LED. (Pico W users must use external LED, see below).
 -  USB cable (with data line)
 -  Download of DIY_Datalink_Pico.uf2
--  Legacy Windows Virtual Machine (tested with Windows 98 SE in VMWare Workstation 16)
+-  Either [winevdm] on your modern Windows OS or a Legacy Windows Virtual Machine (tested with Windows 98 SE in VMWare Workstation 16)
 -  [Timex Datalink watch][Watch_Wiki] (tested with Datalink 150)
--  No other hardware requirements for the original Pico, uses built-in LED.
--  External LED on GPIO pin 18 connected to 1k resistor on GND is required for Pico W, but is optional on original Pico.*
+-  The original Timex Datalink softare (2.1d preferred and tested)
+-  No other hardware requirements for the original Pico, as it uses the built-in LED.
+-  External LED on GPIO pin 18 connected to 1k resistor on GND is required for Pico W, but is optional (and may work better) on the original Pico.*
 
 <img src="DIY_Datalink_pico_watch.jpg" width="476"><br>
-## Connecting it All (Raspberry Pi Pico Version)
+## Connecting it All (Raspberry Pi Pico Version using [winevdm])
 -  Connect the Raspberry Pi Pico to the host PC while holding down the Pico's reset button. This should mount the Pico as a USB drive.
 -  Drag and drop DIY_Datalink_Pico.uf2 onto the Pico's root folder, it should immediatley unmount itself and restart as a USB serial device.
--  After opening the Timex Datalink software, in the virtual machine settings, use the COM port assigned to the Pico and connect it. If you connect before opening the Datalink software, it may remount as a USB drive on the host. Be sure the USB device is connected to the host machine, but the serial port it presents to the OS is connected to the VM. (Legacy Windows may not be able to directly talk to the USB host device, drivers may not be available to accommodate this.) 
--  Use the Timex Datalink software as normal (2.1d is recommended). 
+-  Drag and drop the SETUP.EXE for Timex Datalink installation into [winevdm]'s otvdmw.exe and complete the installation.
+-  Drag and drop the TIMEXDL.EXE you installed (example: to C:\DATALINK) into [winevdm]'s otvdmw.exe.
+-  Use the Timex Datalink software as normal (2.1d is recommended), chosing your correct watch version. 
 
 *If you are trying to use a Pico W, the internal LED hardware changed from a GPIO pin to go through the Wi-Fi chip. This method does not support the low-latency blinking that is required for this project, which is why an external LED is required. 
 
@@ -136,3 +142,4 @@ Instructions originally provided by [MuddledBox]. Thank you!
 [Shilbo]: <https://github.com/Shilbo>
 [3DPrintPics]: <https://github.com/famiclone6502/DIY_Datalink_Adapter/issues/3#issuecomment-1541557457>
 [MuddledBox]: <https://github.com/MuddledBox>
+[winevdm]: <https://github.com/otya128/winevdm>
