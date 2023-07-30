@@ -26,7 +26,7 @@ You may need to shield the watch sensor from interference, like modern LED light
 -  External LED on GPIO pin 18 connected to 1k resistor on GND is required for Pico W, but is optional (and may work better) on the original Pico.*
 
 <img src="DIY_Datalink_pico_watch.jpg" width="476"><br>
-## Connecting it All (Raspberry Pi Pico Version using [winevdm])
+## Using the Raspberry Pi Pico Version in Windows 10 with [winevdm]
 -  Connect the Raspberry Pi Pico to the host PC while holding down the Pico's reset button. This should mount the Pico as a USB drive.
 -  Drag and drop DIY_Datalink_Pico.uf2 onto the Pico's root folder, it should immediatley unmount itself and restart as a USB serial device.
 -  Drag and drop the SETUP.EXE for Timex Datalink installation into [winevdm]'s otvdmw.exe and complete the installation.
@@ -35,7 +35,42 @@ You may need to shield the watch sensor from interference, like modern LED light
 
 *If you are trying to use a Pico W, the internal LED hardware changed from a GPIO pin to go through the Wi-Fi chip. This method does not support the low-latency blinking that is required for this project, which is why an external LED is required. 
 
+### Error: Could not load 'VBRUN300.DLL' required by 'TIMEXDL', error=2
+If you receive an error about VBRUN300.DLL missing, you may need to manually extract the file from the installer using something like [7-zip]. 
+1. Right click on TDL21D.EXE and under 7-zip > click Open archive.
+2. Right click on SETUP.EXE and click Open Inside.
+3. Drag and drop VBRUN300.DLL into C:\DATALINK
+4. Try again
+
+If you only have SETUP.EXE (i.e. the floppy version), you can just right click on it, and under 7-zip click Open archive, then drag and drop VBRUN300.DLL into C:\DATALINK and try again. 
+
+## Using the Raspberry Pi Pico Version in VMware Workstation
+-  This assumes you have a working Windows 98 virtual machine setup in VMware Workstation. You should also be able to use Windows 95. 
+-  Determine which COM port is for the Pico on the physical/host machine. Example: COM7 (Unsure? Is your host machine running Windows 10? Watch Windows 10's Device Manager before and after you've unplugged the device. Note the differences).
+-  If your Windows 98 virtual machine is already powered on, shut down the virtual machine.
+-  Add a virtual serial port via Player > Manage > Virtual Machine Settings or right click on the Windows 98 virtual machine.
+-  Click "Add" (in the bottom left hand corner), select and add a Serial Port.
+-  Set the Serial Port to use the Physical Serial Port you determined earlier. Example: COM7
+-  Note that at no point during the process should you need to physically unplug the Pico. If you have, you may need to start over.
+-  Ensure "Connected" is unchecked in VMware Workstation. 
+-  Ensure "Connect at power on" is unchecked.
+-  Start the Windows 98 Virtual Machine.
+-  Open the Timex software inside Windows 98.
+-  Intentionally fail the first device check with a sync or test.
+-  Go to Player > Manage > Virtual Machine Settings in VMware Workstation. 
+-  Select the virual serial port you added earlier.
+-  Click "Connected" to enable it.
+-  Retry the Timex software sync.
+-  Timex software should now recognize your device.
+-  You should also see the LED blinking on your Pico.
+-  Place the watch 1.5 inches away from the LED. Be sure to shield the watch from external light. Example: Try using a toilet paper tube.
+-  If your watch is set to sync mode, you should hear beeps from the watch!
+
+Instructions originally provided by [MuddledBox]. Thank you!
+
 <img src="DIY_Datalink_pico_software.jpg" width="476"><br>
+If everything is correct, you should see a blinking LED light on the Pico when syncing. 
+
 # Arduino Version
 <img src="DIY_Datalink_photo.png" width="476"><br>
 ## Requirements (Arduino Version)
@@ -70,30 +105,6 @@ Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors.
 -  Connect USB type B to power source (does not currently use USB for data/communication)
 -  Connect null modem cable between TTL adapter and PC
 -  If you're using a virtual machine, pass through the COM port to your VM. It's better not to pass through the USB to serial device directly. This is verified to work in [VMWare Workstation][VMWare]. 
-
-## Step by Step instructions for VMware Workstation with the Pico
--  This assumes you have a working Windows 98 virtual machine setup in VMware Workstation. You should also be able to use Windows 95. 
--  Determine which COM port is for the Pico on the physical/host machine. Example: COM7 (Unsure? Is your host machine running Windows 10? Watch Windows 10's Device Manager before and after you've unplugged the device. Note the differences).
--  If your Windows 98 virtual machine is already powered on, shut down the virtual machine.
--  Add a virtual serial port via Player > Manage > Virtual Machine Settings or right click on the Windows 98 virtual machine.
--  Click "Add" (in the bottom left hand corner), select and add a Serial Port.
--  Set the Serial Port to use the Physical Serial Port you determined earlier. Example: COM7
--  Note that at no point during the process should you need to physically unplug the Pico. If you have, you may need to start over.
--  Ensure "Connected" is unchecked in VMware Workstation. 
--  Ensure "Connect at power on" is unchecked.
--  Start the Windows 98 Virtual Machine.
--  Open the Timex software inside Windows 98.
--  Intentionally fail the first device check with a sync or test.
--  Go to Player > Manage > Virtual Machine Settings in VMware Workstation. 
--  Select the virual serial port you added earlier.
--  Click "Connected" to enable it.
--  Retry the Timex software sync.
--  Timex software should now recognize your device.
--  You should also see the LED blinking on your Pico.
--  Place the watch 1.5 inches away from the LED. Be sure to shield the watch from external light. Example: Try using a toilet paper tube.
--  If your watch is set to sync mode, you should hear beeps from the watch!
-
-Instructions originally provided by [MuddledBox]. Thank you!
 
 ## Troubleshooting (Arduino Version)
 
@@ -143,3 +154,4 @@ Instructions originally provided by [MuddledBox]. Thank you!
 [3DPrintPics]: <https://github.com/famiclone6502/DIY_Datalink_Adapter/issues/3#issuecomment-1541557457>
 [MuddledBox]: <https://github.com/MuddledBox>
 [winevdm]: <https://github.com/otya128/winevdm>
+[7-zip]: <https://www.7-zip.org/download.html>
