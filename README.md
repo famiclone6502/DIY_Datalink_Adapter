@@ -1,20 +1,32 @@
 # DIY Datalink Adapter
 
-This is a modern microcontroller based replacement for the [Notebook Adapter kit][Adapter_Wiki] used by the [Timex Datalink][Watch_Wiki] watch. It's compatible with the original software (and PC hardware), and eliminates the need for syncing the watch with a CRT monitor.<br>
+<img src="DIY_Datalink_pico_photo.jpg" width="476"><br>
+- This is a modern microcontroller based replacement for the [Notebook Adapter kit][Adapter_Wiki] used by the [Timex Datalink][Watch_Wiki] watch. 
+- You can use either a new Windows 10 machine or the original hardware, depending on which microcontroller you pick. 
+- It's compatible with the original software (and PC hardware), and eliminates the need for syncing the watch with a CRT monitor.<br>
+- Use as you would with the official Datalink Notebook Adapter, following in-app directions.<br>
+- Note: You may need to shield the watch sensor from interference, like modern LED lightbulbs or even monitors. <br>
 
-# New! Use Windows 10 to sync your watch
-You can use this "directly" in modern Windows with just a Raspberry Pi Pico and [winevdm]!<br>
-No need to setup a virtual machine with an older OS or source legacy hardware. 
+## July 2023 Update! Now works in Windows 10
+- Instructions have been updated for using this "directly" in modern Windows with [winevdm].
 
-# Two versions for different use cases
--  USB version for the original Raspberry Pi Pico - Simplest setup if using the original Pico model, no hardware tinkering required. You can run this "directly" on modern windows with [winevdm], but also with a virtual machine running a legacy Windows version. Note: Pico W requires external LED.*
--  DB9 version for the Arduino Uno - Some assembly required. Best used with original legacy hardware, but also works with a a Virtual Machine with or without a USB to serial adapter.
+# Two versions of this project
+## USB Raspberry Pi Pico version
+<img src="DIY_Datalink_pico_watch.jpg" width="476"><br>
+- A new simpler way for modern Windows users to sync their watch with just a Raspberry Pi Pico.
+- No hardware tinkering required unless you are using the Pico W, which requires an external LED.
+- You can run this "directly" on modern windows (like Windows 10) with [winevdm].
+- If you prefer, you can use a virtual machine running a legacy Windows version.
+- You can also 3D print a case for this version.
 
-Use as you would the official Datalink Notebook Adapter, following in-app directions.<br>
-You may need to shield the watch sensor from interference, like modern LED lightbulbs or even monitors. <br>
+## DB9 Serial Arduino Uno version
+<img src="DIY_Datalink_photo.png" width="476"><br>
+- The original project to directly replace the serial notebook adapter.
+- This is primarily intended for use with legacy hardware running older versions of Windows. 
+- If you have a serial port or a USB to serial adapter, you could also use this version with a Virtual Machine or even modern Windows with [winevdm]. 
+- Some assembly required. 
 
 # Raspberry Pi Pico Version
-<img src="DIY_Datalink_pico_photo.jpg" width="476"><br>
 ## Requirements (Raspberry Pi Pico Version)
 -  Original model of Raspberry Pi Pico if you want to just use the onboard LED. (Pico W users must use external LED, see below).
 -  USB cable (with data line)
@@ -23,17 +35,14 @@ You may need to shield the watch sensor from interference, like modern LED light
 -  [Timex Datalink watch][Watch_Wiki] (tested with Datalink 150)
 -  The original Timex Datalink softare (2.1d preferred and tested)
 -  No other hardware requirements for the original Pico, as it uses the built-in LED.
--  External LED on GPIO pin 18 connected to 1k resistor on GND is required for Pico W, but is optional (and may work better) on the original Pico.*
+-  Note: External LED on GPIO pin 18 connected to 1k resistor on GND is required for Pico W, but is optional (and may work better) on the original Pico. The internal LED hardware changed from a GPIO pin to go through the Wi-Fi chip on the Pico W. Because of this, it does not support the low-latency blinking that is required for this project.
 
-<img src="DIY_Datalink_pico_watch.jpg" width="476"><br>
-## Using the Raspberry Pi Pico Version in Windows 10 with [winevdm]
--  Connect the Raspberry Pi Pico to the host PC while holding down the Pico's reset button. This should mount the Pico as a USB drive.
--  Drag and drop DIY_Datalink_Pico.uf2 onto the Pico's root folder, it should immediatley unmount itself and restart as a USB serial device.
--  Drag and drop the SETUP.EXE for Timex Datalink installation into [winevdm]'s otvdmw.exe and complete the installation.
--  Drag and drop the TIMEXDL.EXE you installed (example: to C:\DATALINK) into [winevdm]'s otvdmw.exe.
--  Use the Timex Datalink software as normal (2.1d is recommended), chosing your correct watch version. 
-
-*If you are trying to use a Pico W, the internal LED hardware changed from a GPIO pin to go through the Wi-Fi chip. This method does not support the low-latency blinking that is required for this project, which is why an external LED is required. 
+## Using the Raspberry Pi Pico Version in Windows 10 with winevdm
+1. Connect the Raspberry Pi Pico to the host PC while holding down the Pico's reset button. This should mount the Pico as a USB drive.
+2. Drag and drop DIY_Datalink_Pico.uf2 onto the Pico's root folder, it should immediatley unmount itself and restart as a USB serial device.
+3. Drag and drop the installer (SETUP.EXE or TDL21D.EXE) for Timex Datalink into [winevdm]'s otvdmw.exe and complete the installation.
+4. Drag and drop the TIMEXDL.EXE you previously installed (example: to C:\DATALINK) into [winevdm]'s otvdmw.exe.
+5. Use the Timex Datalink software as normal. 
 
 ### Error: Could not load 'VBRUN300.DLL' required by 'TIMEXDL', error=2
 If you receive an error about VBRUN300.DLL missing, you may need to manually extract the file from the installer using something like [7-zip]. 
@@ -45,34 +54,36 @@ If you receive an error about VBRUN300.DLL missing, you may need to manually ext
 If you only have SETUP.EXE (i.e. the floppy version), you can just right click on it, and under 7-zip click Open archive, then drag and drop VBRUN300.DLL into C:\DATALINK and try again. 
 
 ## Using the Raspberry Pi Pico Version in VMware Workstation
--  This assumes you have a working Windows 98 virtual machine setup in VMware Workstation. You should also be able to use Windows 95. 
--  Determine which COM port is for the Pico on the physical/host machine. Example: COM7 (Unsure? Is your host machine running Windows 10? Watch Windows 10's Device Manager before and after you've unplugged the device. Note the differences).
--  If your Windows 98 virtual machine is already powered on, shut down the virtual machine.
--  Add a virtual serial port via Player > Manage > Virtual Machine Settings or right click on the Windows 98 virtual machine.
--  Click "Add" (in the bottom left hand corner), select and add a Serial Port.
--  Set the Serial Port to use the Physical Serial Port you determined earlier. Example: COM7
--  Note that at no point during the process should you need to physically unplug the Pico. If you have, you may need to start over.
--  Ensure "Connected" is unchecked in VMware Workstation. 
--  Ensure "Connect at power on" is unchecked.
--  Start the Windows 98 Virtual Machine.
--  Open the Timex software inside Windows 98.
--  Intentionally fail the first device check with a sync or test.
--  Go to Player > Manage > Virtual Machine Settings in VMware Workstation. 
--  Select the virual serial port you added earlier.
--  Click "Connected" to enable it.
--  Retry the Timex software sync.
--  Timex software should now recognize your device.
--  You should also see the LED blinking on your Pico.
--  Place the watch 1.5 inches away from the LED. Be sure to shield the watch from external light. Example: Try using a toilet paper tube.
--  If your watch is set to sync mode, you should hear beeps from the watch!
+1. This assumes you have a working Windows 98 virtual machine setup in VMware Workstation. You should also be able to use Windows 95.
+2. Determine which COM port is for the Pico on the physical/host machine. Example: COM7 (Unsure? Is your host machine running Windows 10? Watch Windows 10's Device Manager before and after you've unplugged the device. Note the differences).
+3. If your Windows 98 virtual machine is already powered on, shut down the virtual machine.
+4. Add a virtual serial port via Player > Manage > Virtual Machine Settings or right click on the Windows 98 virtual machine.
+5. Click "Add" (in the bottom left hand corner), select and add a Serial Port.
+6. Set the Serial Port to use the Physical Serial Port you determined earlier. Example: COM7
+7. Note that at no point during the process should you need to physically unplug the Pico. If you have, you may need to start over.
+8. Ensure "Connected" is unchecked in VMware Workstation.
+9. Ensure "Connect at power on" is unchecked.
+10. Start the Windows 98 Virtual Machine.
+11. Open the Timex software inside Windows 98.
+12. Intentionally fail the first device check with a sync or test.
+13. Go to Player > Manage > Virtual Machine Settings in VMware Workstation.
+14. Select the virual serial port you added earlier.
+15. Click "Connected" to enable it.
+16. Retry the Timex software sync.
+17. Timex software should now recognize your device.
+18. You should also see the LED blinking on your Pico.
+19. Place the watch 1.5 inches away from the LED. Be sure to shield the watch from external light. Example: Try using a toilet paper tube.
+20. If your watch is set to sync mode, you should hear beeps from the watch!
 
-Instructions originally provided by [MuddledBox]. Thank you!
+VMware instructions originally provided by [MuddledBox]. Thank you!
 
 <img src="DIY_Datalink_pico_software.jpg" width="476"><br>
 If everything is correct, you should see a blinking LED light on the Pico when syncing. 
 
+## 3D Printed Case 
+-  [Shilbo][Shilbo] has [designed][3DPrint] and [printed][3DPrintPics] a case that not only holds the watch and Pico at the right distance, but also shields the light from interference from modern LED lighting!
+
 # Arduino Version
-<img src="DIY_Datalink_photo.png" width="476"><br>
 ## Requirements (Arduino Version)
 -  [Arduino Uno][ArduinoUno] (this should be compatible with other Arduino boards or similar microcontrollers, but it's only been tested on an Uno R3)
 -  [Arduino software][ArduinoSoft] to upload the .ino file to an Arduino Uno
@@ -114,14 +125,6 @@ Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors.
 -  When sending the sketch to the Arduino, check for errors. You should see an "Done uploading" message if everything went smoothly. 
 -  If you're ever having issues, try using a terminal program like PuTTy (version 0.61 works in Win9x) to check for signs of life. When typing x it should echo x, if you type ? it should return a version number.
 -  If your software doesn't like the adapter, make sure you're using the final version, 2.1d. The earliest versions don't support the adapter at all. 
-
-## Troubleshooting (Pico Version)
-
--  Don't assign the Pico directly to the VM, just the COM port. I'm not aware of any working drivers for older OSes. 
--  If VMWare won't let you assign the COM port for the Pico, or causes it to re-mount as a storage device, try running a sync in the Timex software first.
-
-# 3D Printed Case 
--  [Shilbo][Shilbo] has [designed][3DPrint] and [printed][3DPrintPics] a case that not only holds the watch and Pico at the right distance, but also shields the light from interference from modern LED lighting!
 
 # Special Thanks
 - [Antti Huhtala][Antti]
