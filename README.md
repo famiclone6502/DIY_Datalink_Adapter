@@ -15,7 +15,7 @@
 <img src="DIY_Datalink_pico_watch.jpg" width="476"><br>
 - A new simpler way for modern Windows users to sync their watch with just a Raspberry Pi Pico.
 - No hardware tinkering required unless you are using the Pico W, which requires an external LED.
-- You can run this "directly" on modern windows (like Windows 10) with [winevdm].
+- You can run this "directly" on a modern Windows OS (like Windows 10) with [winevdm].
 - If you prefer, you can use a virtual machine running a legacy Windows version.
 - You can also 3D print a case for this version.
 
