@@ -42,7 +42,7 @@
 2. Drag and drop DIY_Datalink_Pico.uf2 onto the Pico's root folder, it should immediatley unmount itself and restart as a USB serial device.
 3. Drag and drop the installer (SETUP.EXE or TDL21D.EXE) for Timex Datalink into [winevdm]'s otvdmw.exe and complete the installation.
 4. Drag and drop the TIMEXDL.EXE you previously installed (example: to C:\DATALINK) into [winevdm]'s otvdmw.exe.
-5. Use the Timex Datalink software as normal. 
+5. Use the Timex Datalink software as normal, but make sure you choose the Notebook Adapter during the tutorial/setup.
 
 ### Error: Could not load 'VBRUN300.DLL' required by 'TIMEXDL', error=2
 If you receive an error about VBRUN300.DLL missing, you may need to manually extract the file from the installer using something like [7-zip]. 
@@ -53,7 +53,7 @@ If you receive an error about VBRUN300.DLL missing, you may need to manually ext
 
 If you only have SETUP.EXE (i.e. the floppy version), you can just right click on it, and under 7-zip click Open archive, then drag and drop VBRUN300.DLL into C:\DATALINK and try again. 
 
-## Using the Raspberry Pi Pico Version in VMware Workstation
+## Workaround for Using the Raspberry Pi Pico Version in VMware Workstation
 1. This assumes you have a working Windows 98 virtual machine setup in VMware Workstation. You should also be able to use Windows 95.
 2. Determine which COM port is for the Pico on the physical/host machine. Example: COM7 (Unsure? Is your host machine running Windows 10? Watch Windows 10's Device Manager before and after you've unplugged the device. Note the differences).
 3. If your Windows 98 virtual machine is already powered on, shut down the virtual machine.
@@ -64,7 +64,7 @@ If you only have SETUP.EXE (i.e. the floppy version), you can just right click o
 8. Ensure "Connected" is unchecked in VMware Workstation.
 9. Ensure "Connect at power on" is unchecked.
 10. Start the Windows 98 Virtual Machine.
-11. Open the Timex software inside Windows 98.
+11. Open the Timex software inside Windows 98 (make sure you choose to output to the Notebook Adapter).
 12. Intentionally fail the first device check with a sync or test.
 13. Go to Player > Manage > Virtual Machine Settings in VMware Workstation.
 14. Select the virual serial port you added earlier.
