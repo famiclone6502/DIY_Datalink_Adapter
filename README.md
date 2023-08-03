@@ -1,10 +1,12 @@
 # DIY Datalink Adapter
+Timex Datalink Notebook Adapter Emulator for the Raspberry Pi Pico and Arudino Uno
 
 <img src="DIY_Datalink_pico_photo.jpg" width="476"><br>
-- This is a modern microcontroller based replacement for the [Notebook Adapter kit][Adapter_Wiki] used by the [Timex Datalink][Watch_Wiki] watch. 
+- This is a modern microcontroller based replacement for the [Notebook Adapter kit][Adapter_Wiki] used by the [Timex Datalink][Watch_Wiki] watch.
+- This, along with the original Notebook Adapter, eliminates the need for syncing the watch with an old CRT monitor.
 - You can use either a new Windows 10 machine or the original hardware, depending on which microcontroller you pick. 
-- It's compatible with the original software (and PC hardware), and eliminates the need for syncing the watch with a CRT monitor.<br>
-- Use as you would with the official Datalink Notebook Adapter, following in-app directions.<br>
+- It's compatible with the original software (and PC hardware), or other third party software that can communicate with an original Notebook adapter.<br>
+- Use just as you would with the official Datalink Notebook Adapter, following in-app directions (choosing to sync with the Notebook adapter).<br>
 - Note: You may need to shield the watch sensor from interference, like modern LED lightbulbs or even monitors. <br>
 
 ## July 2023 Update! Now works in Windows 10
@@ -27,7 +29,7 @@
 - Some assembly required. 
 
 # Raspberry Pi Pico Version
-## Requirements (Raspberry Pi Pico Version)
+## Requirements
 -  Original model of Raspberry Pi Pico if you want to just use the onboard LED. (Pico W users must use external LED, see below).
 -  USB cable (with data line)
 -  Download of DIY_Datalink_Pico.uf2
@@ -84,7 +86,7 @@ If everything is correct, you should see a blinking LED light on the Pico when s
 -  [Shilbo][Shilbo] has [designed][3DPrint] and [printed][3DPrintPics] a case that not only holds the watch and Pico at the right distance, but also shields the light from interference from modern LED lighting!
 
 # Arduino Version
-## Requirements (Arduino Version)
+## Requirements
 -  [Arduino Uno][ArduinoUno] (this should be compatible with other Arduino boards or similar microcontrollers, but it's only been tested on an Uno R3)
 -  [Arduino software][ArduinoSoft] to upload the .ino file to an Arduino Uno
 -  Software libraries for Arduino (see below)
