@@ -1,7 +1,7 @@
 # DIY Datalink Adapter
 Timex Datalink Notebook Adapter Emulator
 
-<img src="DIY_Datalink_pico_software.jpg" width="476"><br>
+<img src="images/win11sync.jpg" width="476"><br>
 
 - This is a modern microcontroller based replacement for the [Notebook Adapter kit][Adapter_Wiki] used by the [Timex Datalink][Watch_Wiki] watch, an adapter that eliminates the need for a CRT monitor to sync the watch.
 - You can use either a new Windows 11 machine with Raspberry Pi Pico microcontrollers and [winevdm], or use the original hardware with the Arduino version.
@@ -9,7 +9,7 @@ Timex Datalink Notebook Adapter Emulator
 - Note: You may need to shield the watch sensor from outside interference, like modern lightbulbs or monitors. <br>
 
 ## USB Raspberry Pi Pico version
-<img src="DIY_Datalink_pico_watch.jpg" width="476"><br>
+<img src="images/DIY_Datalink_pico_watch.jpg" width="476"><br>
 - Hold the reset button and plug in the microcontroller, then drag and drop the appropriate .uf2 file.
 - If using Pico W or W2, it requires an external LED (GPIO pin 18 connected to 1k resistor on GND). Otherwise, the onboard LED will work.
 - Install [winevdm] and then run setup for the Timex Datalink softare (2.1d), then run the program as usual making sure to choose the notebook adapter to sync.
@@ -17,7 +17,7 @@ Timex Datalink Notebook Adapter Emulator
 - A 3D printable case is available to help shield the sensor from interference.
 
 ## DB9 Serial Arduino Uno version
-<img src="DIY_Datalink_Breadboard.png" width="340" height="577"><br>
+<img src="images/DIY_Datalink_Breadboard.png" width="340" height="577"><br>
 Connect the Arduino Uno to RS232 TTL adapter using wires with Dupont connectors. Add an LED with 1k resistor. Power the Arduino Uno via USB. Connect null modem cable from the PC to the TTL adapter.<br>
 -  Connect GND to GND, pin 9 to TX, pin 8 to RX (RX and TX are sometimes swapped), 5V to VCC (<b>Warning</b>: some TTL adapters may require 3V), pin 12 to the postive/longer leg on the LED, GND to a 1k resistor, the other end of resistor to the negative/short end on the red LED.
 -  Connect USB type B to power source (does not use USB for data/communication)
@@ -34,6 +34,9 @@ If you receive an error about VBRUN300.DLL missing, you may need to manually ext
 4. Try again
 
 If you only have SETUP.EXE (i.e. the floppy version), you can just right click on it, and under 7-zip click Open archive, then drag and drop VBRUN300.DLL into C:\DATALINK and try again. 
+
+### Timex Notebook Adapter not found. Please check the connection to the PC.
+I've had issues with it using COM5 and above on Windows 11. Use device manager to remap the COM port of the Pico's USB Serial Device to an unused COM 1-4 under Properties, Port Settings, Advanced, and COM Port Number. 
 
 ## 3D Printed Case 
 -  [Shilbo][Shilbo] has [designed][3DPrint] and [printed][3DPrintPics] a case that not only holds the watch and Pico at the right distance, but also shields the light from interference from modern LED lighting!
