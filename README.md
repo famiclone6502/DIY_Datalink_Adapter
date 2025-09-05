@@ -35,6 +35,9 @@ If you receive an error about VBRUN300.DLL missing, you may need to manually ext
 
 If you only have SETUP.EXE (i.e. the floppy version), you can just right click on it, and under 7-zip click Open archive, then drag and drop VBRUN300.DLL into C:\DATALINK and try again. 
 
+### Timex Notebook Adapter not found. Please check the connection to the PC.
+I've had issues with it using COM5 and above on Windows 11. Use device manager to remap the COM port of the Pico's USB Serial Device to an unused COM 1-4 under Properties, Port Settings, Advanced, and COM Port Number. 
+
 ## 3D Printed Case 
 -  [Shilbo][Shilbo] has [designed][3DPrint] and [printed][3DPrintPics] a case that not only holds the watch and Pico at the right distance, but also shields the light from interference from modern LED lighting!
 
